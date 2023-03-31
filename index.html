@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="assets/js/index.js" type="module"></script>
+    <script src="assets/js/route.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/d51f589380.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <title>Weather App</title>
+</head>
+<body>
+
+    <!-- CHECK USER CONNECTION -->
+    <div class="check__connection">
+        <div class="toast">
+            <div class="content">
+                <div class="icon"></div>
+                <div class="details">
+                    <span></span>
+                    <p></p>
+                </div>
+            </div>
+            <div class="close-icon"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <a href="https://openweathermap.org/" target="_blank" class="header-logo">
+                <img class="logo" src="assets/images/logo_white_cropped.png" alt="logo" width="140" draggable="false">
+            </a>
+
+            <div class="search-view" data-search-view>
+                <div class="search-content">
+                    <input type="search" class="search-field" placeholder="Search cities..." autocomplete="off" data-search-field>
+                
+                    <span class="fas fa-search leading-icon"></span>
+
+                    <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <div class="search-result" data-search-result></div>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <a href="#/current-location" class="btn-primary has-state" data-current-location-btn>
+                    <i class="fa-solid fa-location-crosshairs"></i>
+
+                    <span class="span">Your Location</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <article class="container" data-container>
+            <div class="content-left">
+                <!-- CURRENT WEATHER -->
+                <section class="section current-weather" aria-label="current-weather" data-current-weather></section>
+
+                <!-- FORECAST -->
+                <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast></section>
+            </div>
+
+            <div class="content-right">
+                <!-- HIGHLIGHTS -->
+                <section class="section highlights" aria-labelledby="highlights-label" data-highlights></section>
+
+                <!-- HOURLY FORECAST -->
+                <section class="section hourly-forecast" aria-label="hourly forecast" data-hourly-forecast></section>
+            </div>
+
+           <div class="loader">
+                <div class="lds-ellipsis" data-loading>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+           </div>
+        </article>
+    </main>
+
+    <!-- ERROR PAGE -->
+    <section class="error" data-error-content>
+        <div class="error__container">
+            <div class="error__data">
+                <span class="error__subtitle">Error 404</span>
+                <h1 class="error__title">Sorry</h1>
+                <p class="error__description">
+                    We can't seem to find the page <br> you are looking for.
+                </p>
+                <a href="#/weather?lat=36.7651739&lon=45.7218136" class="error__button btn-primary">
+                    Go Home
+                </a>
+            </div>
+
+            <div class="error__img">
+                <img src="assets/images/ghost-img.png" alt="" draggable="false">
+                <div class="error__shadow"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+            const sr = ScrollReveal({
+                origin: 'top',
+                distance: '60px',
+                duration: 2500,
+                delay: 400,
+                reset: true
+            })
+
+            sr.reveal(`.header`, {delay: 500})
+            sr.reveal(`.content-right`, {delay: 900, interval: 100, origin: 'right'})
+            sr.reveal(`.content-left`, {delay: 900, interval: 100, origin: 'left'})
+    </script>
+
+</body>
+</html>
